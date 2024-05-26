@@ -1,6 +1,11 @@
 # String
 
 ![image](https://github.com/Neimat1/java/assets/63751555/ceb40146-3049-40ee-9efa-b11049b14810)
+```
+    String hello = "Hello";
+    hello = hello.replace("Hello", "Hello World");
+```
+Every unique string literal in Java is stored in String Constant Pool (SCP). So in this context, “Hello” is a different entity while “Hello World” is also a different entity or object in the SCP-the latter does not replace the former in memory, unlike mutable objects.
 
 
 ## Copilot
