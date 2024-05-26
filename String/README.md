@@ -8,21 +8,22 @@ In Java, there are two ways to create a string:
     - The String pool is a storage area in the Java heap where string literals are kept.
     - If you create multiple string literals with the same value, they will all refer to the same object in the String pool.
     - For example:
-
-String str1 = "Python";
-String str2 = "Data Science";
-String str3 = "Python";
-
+```
+    String str1 = "Python";
+    String str2 = "Data Science";
+    String str3 = "Python";
+```
 Here, str1 and str3 both refer to the same "Python" string in the String pool, while str2 is a separate object.
 - Using the new Keyword:
     - When you create a string using the new keyword (e.g., String str1 = new String("Java");), a new string object is created on the heap.
     - The string literal passed as an argument (e.g., "Java") is still stored in the String pool.
     - However, the new string object created with new is not part of the String pool; it resides in the Java heap.
     - For example:
-
-String str1 = new String("Java");
-String str2 = new String("C++");
-String str3 = new String("Data Science");
+```
+    String str1 = new String("Java");
+    String str2 = new String("C++");
+    String str3 = new String("Data Science");
+```
 
 Here, all three string objects (str1, str2, and str3) are separate instances in the heap.
 To illustrate this further, consider the following code snippet:
