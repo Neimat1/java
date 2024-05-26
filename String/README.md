@@ -54,3 +54,8 @@ To illustrate this further, consider the following code snippet:
 - s3 is a new string object created using new, so it is not equal to s1.
 - s4 is obtained by calling .intern() on a new string, which checks if the literal is already in the String pool and returns a reference to the pooled instance if available.
 Remember that string literals created with the new keyword reside in the heap, while those created directly as literals are part of the String pool. Understanding these concepts helps optimize memory usage and performance in your Java applications. 😊
+
+
+### References
+- https://medium.com/@salvipriya97/string-vs-stringbuilder-vs-stringbuffer-which-one-to-choose-4308dbcc3022
+- https://codechunkers.medium.com/understanding-the-immutability-of-strings-in-java-9c1b973c303#:~:text=Java%20String%20class%20is%20a,%22%2C%20%22Hello%20World%22)%3B
