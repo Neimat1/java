@@ -1,5 +1,8 @@
 # String
 
+![image](https://github.com/Neimat1/java/assets/63751555/ceb40146-3049-40ee-9efa-b11049b14810)
+
+
 ## Copilot
 Certainly! Let's delve into the fascinating world of Java strings and explore how they are created and stored.
 In Java, there are two ways to create a string:
@@ -45,4 +48,4 @@ To illustrate this further, consider the following code snippet:
 - s1 and s2 both refer to the same "Java" string in the String pool.
 - s3 is a new string object created using new, so it is not equal to s1.
 - s4 is obtained by calling .intern() on a new string, which checks if the literal is already in the String pool and returns a reference to the pooled instance if available.
-Remember that string literals created with the new keyword reside in the heap, while those created directly as literals are part of the String pool. Understanding these concepts helps optimize memory usage and performance in your Java applications . 😊
+Remember that string literals created with the new keyword reside in the heap, while those created directly as literals are part of the String pool. Understanding these concepts helps optimize memory usage and performance in your Java applications. 😊
