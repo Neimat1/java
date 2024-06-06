@@ -60,7 +60,7 @@ So ***wordObject == wordObject2***  will be false - memory address is different 
 But  ***wordObject .equal(wordObject2)***  will be true –they have the same value-.
 
 
-#### Example
+### Example
 ```
         String word = "Hello world";
         String word2 = "Hello world";
