@@ -1,59 +1,105 @@
 # String
 
-![image](https://github.com/Neimat1/java/assets/63751555/ceb40146-3049-40ee-9efa-b11049b14810)
+When we talk about strings in java we normally use this way:
 ```
-    String hello = "Hello";
-    hello = hello.replace("Hello", "Hello World");
+    String word = “Hello world”;
 ```
-Every unique string literal in Java is stored in String Constant Pool (SCP). So in this context, “Hello” is a different entity while “Hello World” is also a different entity or object in the SCP-the latter does not replace the former in memory, unlike mutable objects.
+But let’s say that there’s another ways to create string in java with different styles.
+
+## Ways to create string in java:
+1. Literal String
+2. Object String
 
 
-## Copilot
-Certainly! Let's delve into the fascinating world of Java strings and explore how they are created and stored.
-In Java, there are two ways to create a string:
-- Using String Literal:
-    - When you create a string using a string literal (e.g., String str1 = "Python";), the string literal is stored in the String pool (also known as the String Intern Pool or String Constant Pool).
-    - The String pool is a storage area in the Java heap where string literals are kept.
-    - If you create multiple string literals with the same value, they will all refer to the same object in the String pool.
-    - For example:
+### 1. Literal String
+
+This is the normal way to create String just using type String  without using keyword ***new***.
 ```
-    String str1 = "Python";
-    String str2 = "Data Science";
-    String str3 = "Python";
-```
-Here, str1 and str3 both refer to the same "Python" string in the String pool, while str2 is a separate object.
-- Using the new Keyword:
-    - When you create a string using the new keyword (e.g., String str1 = new String("Java");), a new string object is created on the heap.
-    - The string literal passed as an argument (e.g., "Java") is still stored in the String pool.
-    - However, the new string object created with new is not part of the String pool; it resides in the Java heap.
-    - For example:
-```
-    String str1 = new String("Java");
-    String str2 = new String("C++");
-    String str3 = new String("Data Science");
+    String word = “Hello world”;
 ```
 
-Here, all three string objects (str1, str2, and str3) are separate instances in the heap.
-To illustrate this further, consider the following code snippet:
-```
-    public class StringPoolExample {
-        public static void main(String[] args) {
-            String s1 = "Java";
-            String s2 = "Java";
-            String s3 = new String("Java");
-            String s4 = new String("Java").intern();
+But this way has some info we need to know like: How this way deal with memory?! This way ueses or depends on String pool. 
 
-            System.out.println((s1 == s2) + ", Strings are equal."); // true
-            System.out.println((s1 == s3) + ", Strings are equal."); // false
-            System.out.println((s1 == s4) + ", Strings are equal."); // true
-        }
-    }
+> [!NOTE]
+>  Did you hear about String pool before ?! Did you understand what is this ?!
+Let’s say a small def for this to be simple for you:
+String Pool : is storage space in java heap memory where String literals are stored💡.
+
+
+So in this case I want to ask myself some questions what I will get from this info?! Is this an useful info for me, and what is the difference if I created a String with keyword new?!
+
+Let’s answer those questions to understand more what’s the difference if you don’t know:
+```
+    String word = “Hello world”;
+    String word2 = “Hello world”;
+    String word3 = “Hello world”;
 ```
 
-- s1 and s2 both refer to the same "Java" string in the String pool.
-- s3 is a new string object created using new, so it is not equal to s1.
-- s4 is obtained by calling .intern() on a new string, which checks if the literal is already in the String pool and returns a reference to the pooled instance if available.
-Remember that string literals created with the new keyword reside in the heap, while those created directly as literals are part of the String pool. Understanding these concepts helps optimize memory usage and performance in your Java applications. 😊
+All 3 variables will have the same memory. Why?!
+We said that literal strings stored in String pool and now we have 3 words have the same value Hello world”   what  will happen ?!
+String pool will have only one instance and all 3 words will point to this value.
+Now we can understand why   ***word == word3***  will be true - they point to the same address in memory-.
+***word.eqyal( word3)***  will be true also because the value for string is the same.
+ 
+### 2. Object String
+
+This is the second way to create String just using keyword ***new***.
+```
+    String wordObject = new String(“Hello world”);
+```
+difference here object will, it will be created directly in the heap itself and the literal itself will be added to string pool if not exist.
+```
+    String wordObject  = new String(“Hello world”); 
+    String wordObject2  = new String(“Hello world”); 
+    String wordObject3  = new String(“Hello world”);
+```
+
+Here there’s the difference, all objects have the same value but not the same memory address because each object created with keyword new will has its record in heap memory.
+So ***wordObject == wordObject2***  will be false - memory address is different -.
+But  ***wordObject .equal(wordObject2)***  will be true –they have the same value-.
+
+
+#### Example
+```
+        String word = "Hello world";
+        String word2 = "Hello world";
+        String wordObject = new String("Hello world");
+        String wordObject2 = new String("Hello world");
+
+        System.out.println("word.equals(word2) : " + word.equals(word2));
+        System.out.println("wordObject.equals(wordObject2) : " + wordObject.equals(wordObject2));
+        System.out.println("word.equals(wordObject2) : " + word.equals(wordObject2));
+        System.out.println("-------------------------------------------------------------------------------");
+        System.out.println("word == word2 : " + (word == word2));
+        System.out.println("wordObject == wordObject2 : " + (wordObject == wordObject2));
+        System.out.println("word == wordObject2  : " + (word == wordObject2));
+        System.out.println("-------------------------------------------------------------------------------");
+
+        System.out.println("Memory address of word : " + Integer.toHexString(System.identityHashCode(word)));
+        System.out.println("Memory address of word2 : " + Integer.toHexString(System.identityHashCode(word2)));
+        System.out.println("Memory address of wordObject : " + Integer.toHexString(System.identityHashCode(wordObject)));
+        System.out.println("Memory address of wordObject2 : " + Integer.toHexString(System.identityHashCode(wordObject2)));
+
+
+        word.equals(word2) : true
+        wordObject.equals(wordObject2) : true
+        word.equals(wordObject2) : true
+        -------------------------------------------------------------------------------
+        word == word2 : true
+        wordObject == wordObject2 : false
+        word == wordObject2  : false
+        -------------------------------------------------------------------------------
+        Memory address of word : 6bf256fa
+        Memory address of word2 : 6bf256fa
+        Memory address of wordObject : 3fb6a447
+        Memory address of wordObject2 : 79b4d0f
+```
+ 
+
+
+
+	
+	
 
 
 ### References
