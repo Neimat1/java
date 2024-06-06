@@ -36,6 +36,7 @@ Let’s answer those questions to understand more what’s the difference if you
 ```
 
 All 3 variables will have the same memory. Why?!
+
 We said that literal strings stored in String pool and now we have 3 words have the same value Hello world”   what  will happen ?!
 String pool will have only one instance and all 3 words will point to this value.
 Now we can understand why   ***word == word3***  will be true - they point to the same address in memory-.
