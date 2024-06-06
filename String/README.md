@@ -60,7 +60,7 @@ So ***wordObject == wordObject2***  will be false - memory address is different 
 But  ***wordObject .equal(wordObject2)***  will be true –they have the same value-.
 
 
-### Example
+## Example
 ```
         String word = "Hello world";
         String word2 = "Hello world";
@@ -103,6 +103,6 @@ But  ***wordObject .equal(wordObject2)***  will be true –they have the same va
 	
 
 
-### References
+## References
 - https://medium.com/@salvipriya97/string-vs-stringbuilder-vs-stringbuffer-which-one-to-choose-4308dbcc3022
 - https://codechunkers.medium.com/understanding-the-immutability-of-strings-in-java-9c1b973c303#:~:text=Java%20String%20class%20is%20a,%22%2C%20%22Hello%20World%22)%3B
